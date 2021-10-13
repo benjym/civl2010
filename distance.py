@@ -1,6 +1,6 @@
 import numpy as np
 
-def distance(lat1,lon1,lat2,lon2)
+def distance(lat1,lon1,lat2,lon2):
 #DISTANCE Calculates the great circle arc distance between two locations
 #   Simplified version of the Octave version, taken from:
 #   https://sourceforge.net/p/octave/mapping/ci/default/tree/inst/distance.m
