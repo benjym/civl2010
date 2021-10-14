@@ -1,14 +1,11 @@
 import numpy as np
-
-def distance(lat1,lon1,lat2,lon2):
-#DISTANCE Calculates the great circle arc distance between two locations
-#   Simplified version of the Octave version, taken from:
-#   https://sourceforge.net/p/octave/mapping/ci/default/tree/inst/distance.m
-
-    dlon = lon2 - lon1
-    a = np.radians(lat1)
-    b = np.radians(lat2)
-    C = np.radians(dlon)
-    dist = np.arccos(np.sin(b)*np.sin(a) + np.cos(b)*np.cos(a)*np.cos(C))
-    dist = np.degrees(dist)
-    return dist
+# Stolen from https://towardsdatascience.com/heres-how-to-calculate-distance-between-2-geolocations-in-python-93ecab5bbba4
+def distance(lat1, lon1, lat2, lon2):
+   r = 6371 # radius of the earth in km
+   phi1 = np.radians(lat1)
+   phi2 = np.radians(lat2)
+   delta_phi = np.radians(lat2 — lat1)
+   delta_lambda = np.radians(lon2 — lon1)
+   a = np.sin(delta_phi / 2)**2 + np.cos(phi1) * np.cos(phi2) *   np.sin(delta_lambda / 2)**2
+   res = r * (2 * np.arctan2(np.sqrt(a), np.sqrt(1 — a)))
+   return res
